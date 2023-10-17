@@ -82,8 +82,8 @@ console.log(apellidos);
  //Se puede utilizar LOCALECOMPARE que es un método del objeto String.
  // devuelve un valor + si la cadena que se pasa como parámetro debe ir antes de la cadena que lo invoca
  //EJEMPLO: cadena1.localeCompare(cadena2);
- //DEvuelve un valor positivo si el orden es cadena1 cadena2
- //Devuelve un valor negativo si el orden es cadena2 cadena1
+ //DEvuelve un valor positivo si el orden es cadena2 cadena1
+ //Devuelve un valor negativo si el orden es cadena1 cadena2
  
  apellidos.sort((a,b)=>b.localeCompare(a));
  console.log(apellidos);
