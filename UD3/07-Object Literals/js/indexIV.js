@@ -22,7 +22,10 @@ const electro={
         //Es necesario especificarlo para hacer referencia a las propiedades del objeto desde un método.
         return `El electrodomestico es ${this.nombre} y el precio es ${this.precio} y tienen el color ${this.color}`;
     },
-    //como función flecha
+    //Las funciones flecha no pueden utilizarse en la definición de métodos dentro de los constructores
+    //porque no reconocen el contexto a través de this
+    //Si intentamos hacer uso de esta función, aunque javascript la acepta, obtendremos un UNDEFINED 
+    //al hacer referencia a nombre, precio y color a través de this.
     toString2: ()=>`El electrodomestico es ${this.nombre} y el precio es ${this.precio} y tienen el color ${this.color}`
 }
 //Se define otro objeto literal que se llama MEDIDAS
