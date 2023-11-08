@@ -1,0 +1,23 @@
+Elabora expresiones regulares en base a las siguientes indicaciones:
+
+    1. Coincide con una cadena que contiene la secuencia de letras ‘ns’.-→ ns
+    2. Coincide con una cadena que contiene solo dígitos del 0 al 9. → ^[0-9]+$
+    3. Coincide con una cadena que contiene al menos una vocal en minúscula. → [aeiou]
+    4. Coincide con una cadena que contiene una secuencia de tres letras en mayúscula. → [A-Z]{3}
+    5. Coincide con un número entero de 1 a 100. → ^([1-9][0-9]?|100)$
+    6. Coincide con una cadena que contiene una fecha en el formato "dd/mm/aaaa".-→ ^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$
+    7. Coincide con una cadena que contiene un número decimal con hasta dos decimales. → ^\d+(\.\d{1,2})?$ (OTRA SOLUCIÓN ^[0-9]+(\.|\,)?([0-9]?){2}$)
+    8. Coincide con una cadena que contiene una dirección de correo electrónico. → ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$
+    9. Coincide con una cadena que contiene un número de teléfono en el formato "(123) 456-7890". →  /^\(\d{3}\) \d{3}-\d{4}$/
+    10. Coincide con una cadena que contiene una URL que comienza con "http://" o "https://". Solución: /^https?:\/\/\S+/
+    11. Coincide con una cadena que contiene una palabra de 5 letras que comienza con 'a' o 'b'. Solución: /^[ab]\w{4}$/
+    12. Coincide con una cadena que contiene una palabra que no comienza con una vocal. Solución: /^[^aeiou]\w+/
+    13. Coincide con una cadena que contiene una palabra que termina con 'ing'. Solución: /\w+ing\b/
+    14. Coincide con una cadena que contiene una palabra de tres letras que no termina en 's'. Solución: /\b[a-zA-Z]{2}[a-rt-zA-RT-Z]\b/
+    15. Coincide con una cadena que contiene un número de teléfono en el formato "123-456-7890" o "123.456.7890". Solución: /^\d{3}[-.]\d{3}[-.]\d{4}$/
+    16. Coincide con una cadena que contiene una etiqueta HTML válida. Solución: /<[^>]+>/
+    17. Coincide con una palabra no contiene la letra 'z'. Solución: /^[^z]*$/
+    18. Coincide con una cadena que contiene una fecha en el formato "dd/mm/aa" o "dd/mm/aaaa". Solución: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/
+    19. Coincide con una cadena que contiene un número hexadecimal de 4 dígitos precedido por "0x". Solución: /0x[0-9A-Fa-f]{4}/
+    20. Coincide con una cadena que contiene una palabra de 4 letras que termina en 'at' o 'ot'. Solución: /\b[a-zA-Z]{2}(at|ot)\b/
+    21. Coincide con una cadena que contiene una cadena que termina con ".com" o ".org". Solución: /\.(com|org)$/
