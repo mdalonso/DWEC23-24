@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap"
+      rel="stylesheet"/>
+     <link rel="stylesheet" href="../../../assets/css/style.css" /> 
+     <!--el archivo spinner.css contiene un objeto personalizado con una animación-->
+     <link rel="stylesheet" href="../../../assets/css/spinner.css">
+  </head>
+  <body>
+    <div class="contenido min-h-screen bg-slate-300">
+      <h1>DWEC 23-24</h1>
+      <p>UD4.-Interacción con el usuario. Eventos y formularios</p>
+      <h2 class="hashtag">03-03 Formularios III</h2>
+    </div> 
+       <section id="form-register">
+          <form action="" method="post" id="frmFirst" name="formNameFirst" autocomplete="false">
+            <h4>Validación Formulario</h4>
+            <!--Cada uno de los elementos de entrada de datos tienen asociado un elemento span para mostrar
+            mensajes de error cuyo formato está definido en style.css-->
+            <input type="text" class="controls" id="nombre" name="texto" placeholder="Introduzca el nombre" autofocus>
+            <span class="error" id="errnombre" name="error"></span>
+           <!--el input de tipo number incorpora un validador interno que sólo permite introducir números
+          además de flechas para aumentar/disminuir su valor (según navegador)-->
+            <input type="number" class="controls" id="edad" name="texto"  placeholder="Introduzca la edad">
+            <span class="error" id="erredad" name="error"></span>
+            <!--El input de tipo date incorpora un validador interno que sólo permite introducir fechas
+            en un formato adecuado más un selector de calendario-->
+            <input type="date" class="controls" name="texto" id="fecha" placeholder="Introduzca la fecha">
+            <span class="error" id="errfecha" name="error"></span>
+            <!--los input de tipo radio con el mismo valor en su propiedad name forman un grupo
+            de selección excluyente-->
+            <input class="radio" type="radio" name="tipo" id="profe" value="profes@r">Profes@r
+            <input class="radio" type="radio" name="tipo" id="estudiante" value="estudiante">Estudiante
+            <span class="error" id="errtipo" name="error"></span>
+            <!--el elemento de tipo select muestra un combo en el cual se puede seleccionar un valor-->
+            <select class="controls" name="texto" id="provincia">
+              <!--option selected value permite mostrar un texto de ayuda al usuario-->
+             <option selected value="">Elige...</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Sevilla">Sevilla</option>
+              <option value="Jaén">Jaén</option>
+          </select>
+          <span class="error" id="errprovincia" name="error"></span>
+          <!--Después tenemos un área con dos botones: uno para enviar cuyo type por defecto es submit y otro de
+          tipo reset para limpiar el formulario-->
+            <div>      
+            <button class="botons botonsFormVal" id="enviar">Enviar</button>
+            <button type="reset" class="botons botonsFormVal botonCancelar" id="cancelar">Cancelar</button>
+          </div>
+          <input type="text" id="recaptcha" name="recapatcha_response">
+          <!--Se inserta el objeto spinner-->
+          <div id="spinner" class="sk-circle" style="display:none">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
+          <!--Se inserta un span para mostrar un mensaje mientras se están enviando los datos-->
+           <span class="exito" id="exito"></span>
+        </form>
+         
+         
+        </section>
+          <div>
+           
+
+            <!--<script src="https://www.google.com/recaptcha/api.js?render=6LfsP90oAAAAAMBv6Pt2vaRIJGe-wKAQz6iHOI1Y"></script>-->
+            <script src="https://www.google.com/recaptcha/api.js?render=6LfsP90oAAAAAMBv6Pt2vaRIJGe-wKAQz6iHOI1Y"></script>
+            <script src="./js/appI.js"></script>
+            <noscript>El navegador no soporta JavaScript</noscript>
+          </div>
+        </body>
+    
+ 
+</html>
