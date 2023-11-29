@@ -1,7 +1,7 @@
 "use strict"
 
 //AÑADIR Y ELIMINAR NODOS AL DOM**********************************************
-//Codificar esto después de ver el resto del código
+
 //El evento mostrará un aviso utilizando la librería sweetalert2
 const evento=()=>{
   Swal.fire({
