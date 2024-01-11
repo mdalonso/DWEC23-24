@@ -1,0 +1,54 @@
+.carta {
+    width: 100px;
+    height: 150px;
+    border: 1px solid #000;
+    background-color: #ccc;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .tapete {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #f6b103;
+    background-color: #032d14;
+    /*margin: 5px;*/
+    display: inline-block;
+    cursor: pointer;
+  }
+  .resaltada {
+    background-color: yellow;
+  }
+  .bloque{
+    margin:auto;
+  }
+  .botons {
+    display:inline-block;
+    
+    border: 2px solid #f6b103;
+    border-radius: 5px;
+    padding:10px; 
+    
+    margin:16px 0;
+    margin-left: 100px;
+    /*margin-right: auto;*/
+    font-size: 16px;
+    box-shadow: 7px 13px 37px #000;
+}
+.botonsInicio {
+  width: 150px;
+  /*margin: auto;*/
+}
+body {
+    background: #5e3507;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5e3507, #b49651);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5e3507, #b49651); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+h1 {
+  font-family: 'Carrois Gothic SC', sans-serif;
+  display: block;
+  text-align: center;
+  line-height:.7;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px #f6b103;
+}
