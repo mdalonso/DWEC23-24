@@ -6,18 +6,9 @@
 $(()=>{
     mostrarTabla();
    
-     document.querySelector(".recargar").addEventListener('click', ()=>{
-         mostrarTabla();
-     })
+     $(".recargar").on('click', mostrarTabla});
 })
 
-//En JS nativo
-/* document.addEventListener("DOMContentLoaded", ()=>{
-    mostrarTabla();
-    // document.querySelector(".recargar").addEventListener('click', ()=>{
-    //     mostrarTabla();
-    // })
-}) */
 //Vamos a utilizar una función Async/Await para manejar el asincronismo que puede producirse entre la consulta al
 //servidor y el tratamiento de la respuesta.
 const mostrarTabla=async()=>{
