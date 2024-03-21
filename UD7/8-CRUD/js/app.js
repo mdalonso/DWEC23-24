@@ -147,32 +147,49 @@ const add = async () => {
   }
 };
 
-
+//MÉTODO MOSTRARCLIENTES: El objetivo de este método es mostrar la lista de clientes en el Dashboard
 const mostrarClientes = async () => {
+  //En primer lugar se crea una variable con el código html necesario para introducir los botones de actulización y borrado en cada
+  //fila. Ya que estos se van a repetir para cada fila, lo tenemos preparado para evitar reescribir el código tantas veces
   const botAcc = `<button type='button' class='edit btn btn-success'><i class="fa-regular fa-pen-to-square"></i></button><button type='button' class='del btn btn-danger ms-2'><i class="fa-solid fa-trash"></i></button>`;
-  //vaciar la tabla
+  
+  //vaciar la tabla para no duplicar registros
   $(".table tbody").empty();
-  //cargar los clientes
+  
+  //cargar los clientes haciendo uso del méoto getClientes de la API
   const clientes = await getClientes();
   console.log(clientes);
+
+  //El método getClientes devuelve una colección con tantos elementos como clientes encuentre en el archivo db.json.
+  //Si hay clientes...
   if (clientes.data.length > 0) {
-    //cargar los clientes en la tabla
+   
+    //...Recorre la colección creando una fila por cada uno de los elementos
     clientes.data.forEach((cliente) => {
       $(".table tbody").append(
         `<tr><td>${cliente.id}</td><td>${cliente.nameCliente}</td><td>${cliente.emailCliente}</td><td>${cliente.tlfnoCliente}</td><td>${cliente.empresaCliente}</td><td>${botAcc}</td></tr>`
       );
     });
-    //establecer evento click a los botones de acción
+    //establecer evento click a los botones de acción de la fila
+    //El botón de eliminar invoca al eliminarCliente que hará uso de deleteCliente de la API
     $(".del").on("click", eliminarCliente);
+    //El botón de actualizar invoca al actualizarCliente que hará uso de updateCliente de la API
     $(".edit").on("click", actualizarCliente);
   } else {
+    //Si no hay elementos en la colección...
     $(".table tbody").append(
+      //...Se crea una fila con una única columna que ocupa todo el ancho de la tabla con un aviso al usuario
       `<tr><td colspan=6 class="text-center">No hay registros</td></tr>`);
   }
 };
+
+//Método ELIMINARCLIENTE: Este método tiene como objetivo eliminar el cliente de la fila identificándolo por su id.
 const eliminarCliente =function()  {
+  //Obtenemos el valor del identificar del cliente mediante el contenido de la primera columna
   const id=this.parentNode.parentNode.firstChild.innerText;
   console.log(id);
+  
+  //Se muestra un mensaje de confirmación al usuario
   Swal.fire({
     title: "¿Desea eliminar el cliente?",
     icon: "warning",
@@ -182,50 +199,69 @@ const eliminarCliente =function()  {
     focusCancel:true
   }).then(async(result) => {
     if (result.isConfirmed) {
+      //Si el cliente confirma, se hace uso del método deleteCliente dela API.
       const datos=await deleteCliente(id);
-      mensaje(`Cliente borrado`, 'success');
-      mostrarClientes();
+      //Se gestiona la retroalimentación al usuario utilizando la información devuelta por deleteCliente
+      if (datos.mensaje="borrado"){
+        mensaje(`Cliente borrado`, 'success');
+        mostrarClientes();
+      }else{
+        mensaje(`Cliente NO borrado`, 'error');
+      }
     }
   });
 };
+
+//Método ACTUALIZARCLIENTE: El objetivo es modificar la información de un cliente en el archivo db.json identificándolo por su id.
 const actualizarCliente =async function()  {
+  //Obtenemos el valor del identificar del cliente mediante el contenido de la primera columna
    id=this.parentNode.parentNode.firstChild.innerText;
-  //cargar los datos del cliente
+  
+  //Obtenemos los datos del cliente con ese id haciendo uso del método GETCLIENTE de la API
   const datos= await getCliente(id);
-  //mostrar la ventana modal
+  
+  //utilizaremos la ventana modal para mostrar al usuario la información del cliente seleccionado para modificar
   $("#frmModal").modal("show");
   //cargar los datos en el formulario
   document.querySelector("#nameCliente").value=datos.nameCliente;
   document.querySelector("#emailCliente").value=datos.emailCliente;
   document.querySelector("#tlfnoCliente").value=datos.tlfnoCliente;
   document.querySelector("#empresaCliente").value=datos.empresaCliente;
-//modificar los textos
+
+  //modificar la apariencia de formulario para que el usuario sepa que se está MODIFICANDO un cliente en lugar de AÑADIR uno nuevo.
   document.querySelector(".modal-title").innerText="Modificar Cliente";
   document.querySelector(".submit").innerText="Modificar";
 };
 
-
+//MÉTODO GRABARACTCLIENTE: el objetivo de este método es grabar la información actualizada de un cliente en particular
+//haciendo uso del método updateCliente de la API
 const grabarActCliente=async ()=>{
+  //el método updateCliente recibe como parámetro un objeto JSON con la información del cliente que se quiere actualizar,
+  //por tanto habrá que crear primero ese objeto en la variable cliente.
    const cliente={
-    'id':document.querySelector("#id").value,
+    'id':id,
     'nameCliente':document.querySelector("#nameCliente").value,
     'emailCliente':document.querySelector("#emailCliente").value,
     'tlfnoCliente':document.querySelector("#tlfnoCliente").value,
     'empresaCliente': document.querySelector("#empresaCliente").value
    }
-   
+  
+   //Se invoca a updateCliente
    const datos= await updateCliente(cliente);
-   //mostrar el mensaje
+
+  //Se gestiona la retroalimentación al usuario haciendo uso de la información devuelta por updateCliente.
+   
    if (datos.mensaje=="actualizado"){
+    //En caso de que se reciba el mensaje "actualizado" se muestra mensaje de éxito y se recarga la tabla
     mensaje("Cliente actualizado", "success");
     mostrarClientes();
    }else{
+     //En caso contrario, se muestra mensaje de error.
     mensaje("Cliente No actualizado", "error");
    }
+  
    //limpiar y cerrar formulario
    $("input").val("");
    $("#frmModal").modal("hide");
-
-   
 
 };
