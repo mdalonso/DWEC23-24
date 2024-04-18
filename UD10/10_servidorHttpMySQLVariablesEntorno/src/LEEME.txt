@@ -1,0 +1,10 @@
+Hay que crear el archivo .env en la carpeta base del proyecto con el siguiente contenido:
+
+PORT=3000
+DB_HOST='localhost'
+DB_PORT=3306
+DB_USER='root'
+DB_PASSWORD=
+DB_DATABASE='companydb'
+
+
